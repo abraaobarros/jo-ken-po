@@ -3,6 +3,9 @@
 import webapp2
 import jinja2
 import os
+import logging
+from util import session_module
+from model.Usuario import Usuario
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -32,13 +35,41 @@ def render(handler, template_name="index.html", values={}):
     return True
 
 
-class MainHandler(webapp2.RequestHandler):
+class MainHandler(session_module.BaseSessionHandler):
     def get(self):
-        self.response.out.write('dsadasda')
+        if self.session.get('email') is None:
+            logging.error("entrou no if")
+            render(self, template_name='login.html')
+        else:
+            render(self)
+
+
+class LoginHandler(session_module.BaseSessionHandler):
+    def post(self):
+        username = self.request.get('username')
+        password = self.request.get('password')
+        dados = {
+            'username': username,
+            'password': password,
+        }
+        msg = Usuario.validar_login(dados)
+        if msg is None:
+            self.session['email'] = username
+            render(self)
+        else:
+            render(self, 'login.html')
+
+
+class CadastroHandler(session_module.BaseSessionHandler):
+    def get(self):
+        render(self, template_name='cadastro.html')
 
 
 app = webapp2.WSGIApplication(
     [
         ('/', MainHandler),
+        ('/login', LoginHandler),
+        ('/cadastro', CadastroHandler),
     ],
-    debug=True)
+    debug=True,
+    config=session_module.myconfig_dict)
