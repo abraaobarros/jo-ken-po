@@ -34,7 +34,7 @@ def render(handler, template_name="index.html", values={}):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        render(self)
+        self.response.out.write('dsadasda')
 
 
 app = webapp2.WSGIApplication(
