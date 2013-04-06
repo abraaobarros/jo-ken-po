@@ -2,6 +2,10 @@
 
 import webapp2
 import jinja2
+import os
+
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 
 def render(handler, template_name="index.html", values={}):
@@ -15,7 +19,6 @@ def render(handler, template_name="index.html", values={}):
         "templates/" + template_name)
     # verifica se o arquivo existe
     if not os.path.isfile(template_file):
-        logging.warning("aqui")
         return False
 
     # copia o dict e adiciona o caminho do arquivo que fez a request
@@ -26,13 +29,12 @@ def render(handler, template_name="index.html", values={}):
     template = jinja_environment.get_template(template_file)
     output_string = template.render(copia_values)
     handler.response.out.write(output_string)
-    #logging.warning(handler.response.out.write(output_string))
     return True
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        print 'hello world'
+        render(self)
 
 
 app = webapp2.WSGIApplication(
