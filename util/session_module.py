@@ -2,9 +2,6 @@
 
 import webapp2
 from webapp2_extras import sessions
-from model.UsuarioEstabelecimento import UsuarioEstabelecimento
-from model.Usuario import Usuario
-import logging
 
 
 # dict necessário para configurar a chave secreta da sessão
@@ -33,29 +30,3 @@ class BaseSessionHandler(webapp2.RequestHandler):
     def md5_value(self, value):
         import hashlib
         return hashlib.md5(value).hexdigest()
-
-    def login_backend_user(self, username, senha_md5):
-        usuario = UsuarioEstabelecimento.all().filter('email =', username).filter('password =', senha_md5).get()
-        if usuario is not None:
-            self.session["id_est"] = usuario.idEstabelecimentoList.pop()
-            self.session["usuario"] = usuario.nome
-        self.redirect("/backend")
-
-    def login_frontend_user(self, username, senha_md5):
-        logging.warning(type(username))
-        # Se for vazio ele recebe uma string vazia em unicode.
-        if username is not u"":
-            usuario = Usuario.get_by_key_name(username)
-            if usuario is not None:
-                if(usuario.password == senha_md5):
-                    self.session["user_id"] = usuario.key().id_or_name()
-                    return None
-                else:
-                    error = u"Password inválido"
-                    return error
-            else:
-                error = u"Usuário inexistente"
-                return error
-        else:
-            error = u"Por favor, insira alguma coisa"
-            return error
