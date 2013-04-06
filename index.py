@@ -6,6 +6,7 @@ import os
 import logging
 from util import session_module
 from model.Usuario import Usuario
+from model.ideia import Ideia
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -38,38 +39,150 @@ def render(handler, template_name="index.html", values={}):
 class MainHandler(session_module.BaseSessionHandler):
     def get(self):
         if self.session.get('email') is None:
-            logging.error("entrou no if")
             render(self, template_name='login.html')
         else:
             render(self)
 
 
 class LoginHandler(session_module.BaseSessionHandler):
-    def post(self):
-        username = self.request.get('username')
-        password = self.request.get('password')
-        dados = {
-            'username': username,
-            'password': password,
-        }
-        msg = Usuario.validar_login(dados)
-        if msg is None:
-            self.session['email'] = username
+    def get(self):
+        if self.request.get('logout') == 'true':
+            if self.session.get('email') is not None:
+                self.session.pop()
             render(self)
+
+    def post(self):
+        if self.session.get('email') is None:
+            logging.warning("Iniciando login")
+            username = self.request.get('username')
+            password = self.request.get('password')
+            dados = {
+                'username': username,
+                'password': password,
+            }
+            msg = Usuario.validar_login(dados)
+            if msg is None:
+                logging.warning("Logou")
+                self.session['email'] = username
+                render(self)
+            else:
+                logging.warning("Não logou")
+                render(self, 'login.html')
         else:
-            render(self, 'login.html')
+            render(self)
 
 
 class CadastroHandler(session_module.BaseSessionHandler):
     def get(self):
         render(self, template_name='cadastro.html')
 
+    def post(self):
+        logging.warning("Sessão: " + str(self.session.get('email')))
+        if self.session.get('email') is None:
+            logging.warning("Pegando as variáveis do GET")
+            nome = self.request.get('nome')
+            username = self.request.get('username')
+            password = self.request.get('password')
+            conf_password = self.request.get('conf_password')
+            dados = {
+                'username': username,
+                'password': password,
+                'conf_password': conf_password,
+            }
+            msg = Usuario.validar_cadastro_usuario(dados)
+            if msg is None:
+                logging.warning(u"Salvando no banco")
+                usuario = Usuario(key_name=username)
+                usuario.nome = nome
+                usuario.username = username
+                usuario.password = usuario.senha_md5(password)
+                usuario.put()
+                logging.warning("Salvo no banco")
+                self.session['email'] = username
+                render(self)
+            else:
+                render(self, template_name='cadastro.html', values={'erro': msg})
+        else:
+            render(self)
+
+
+#TODO: talvez não precise...
+class CadastrarProjetoHandler(session_module.BaseSessionHandler):
+    def get(self):
+        if self.session.get("email") is None:
+            render(self, template_name="login.html")
+        else:
+            render(self, template_name="cadastrar_projeto.html")
+
+    def post(self):
+        pass
+
+
+class ListaProjetosHandler(session_module.BaseSessionHandler):
+    def get(self):
+        pass
+#===============================================================================
+
+
+class CadastrarIdeiaHandler(session_module.BaseSessionHandler):
+    def get(self):
+        if self.session.get("email") is None:
+            render(self, template_name="login.html")
+        else:
+            render(
+                self,
+                template_name="cadastrar_ideia.html",
+                values={'email': self.session.get('email')})
+
+    def post(self):
+        if self.session.get("email") is not None:
+            nome = self.request.get('nome')
+            descricao = self.request.get('descricao')
+            video = self.request.get('video')
+            categoria = self.request.get('categoria')
+
+            ideia = Ideia()
+            ideia.nome = nome
+            ideia.descricao = descricao
+            ideia.video = video
+            ideia.categoria = categoria
+            ideia.usuario = Usuario.get_by_key_name(self.session.get('email'))
+            ideia.votos = 0
+            ideia.put()
+
+            ideias = Ideia.all()
+            dados = {
+                'ideias': ideias,
+                'email': self.session.get("email"),
+            }
+            render(self, template_name="lista_ideias.html", values=dados)
+
+        else:
+            render(self, template_name="cadastrar_ideia.html")
+
+
+class ListaIdeiasHandler(session_module.BaseSessionHandler):
+    def get(self):
+        if self.session.get("email") is not None:
+            ideias = Ideia.all()
+            dados = {
+                'ideias': ideias,
+                'email': self.session.get("email"),
+            }
+            render(self, template_name="lista_ideias.html", values=dados)
+        else:
+            render(self)
+
 
 app = webapp2.WSGIApplication(
     [
         ('/', MainHandler),
         ('/login', LoginHandler),
+        ('/ideias', ListaIdeiasHandler),
+        (r'/ideias/(\d+)', ListaIdeiasHandler),
         ('/cadastro', CadastroHandler),
+        ('/cadastrar_projeto', CadastrarProjetoHandler),
+        ('/cadastrar_ideia', CadastrarIdeiaHandler),
     ],
     debug=True,
     config=session_module.myconfig_dict)
