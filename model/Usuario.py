@@ -63,3 +63,7 @@ class Usuario(db.Model):
         import hashlib
         senha_md5 = hashlib.md5(senha).hexdigest()
         return senha_md5
+
+    def votar(self):
+        logging.warning(dir(self.ideias))
+        self.ideias += 1

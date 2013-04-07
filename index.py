@@ -48,8 +48,8 @@ class LoginHandler(session_module.BaseSessionHandler):
     def get(self):
         if self.request.get('logout') == 'true':
             if self.session.get('email') is not None:
-                self.session.pop()
-            render(self)
+                self.session.pop("email")
+            render(self, 'login.html')
 
     def post(self):
         if self.session.get('email') is None:
@@ -106,24 +106,6 @@ class CadastroHandler(session_module.BaseSessionHandler):
             render(self)
 
 
-#TODO: talvez não precise...
-class CadastrarProjetoHandler(session_module.BaseSessionHandler):
-    def get(self):
-        if self.session.get("email") is None:
-            render(self, template_name="login.html")
-        else:
-            render(self, template_name="cadastrar_projeto.html")
-
-    def post(self):
-        pass
-
-
-class ListaProjetosHandler(session_module.BaseSessionHandler):
-    def get(self):
-        pass
-#===============================================================================
-
-
 class CadastrarIdeiaHandler(session_module.BaseSessionHandler):
     def get(self):
         if self.session.get("email") is None:
@@ -150,15 +132,10 @@ class CadastrarIdeiaHandler(session_module.BaseSessionHandler):
             ideia.votos = 0
             ideia.put()
 
-            ideias = Ideia.all()
-            dados = {
-                'ideias': ideias,
-                'email': self.session.get("email"),
-            }
-            render(self, template_name="lista_ideias.html", values=dados)
+            render(self, template_name="cadastrar_ideia.html")
 
         else:
-            render(self, template_name="cadastrar_ideia.html")
+            render(self, template_name="login.html")
 
 
 class ListaIdeiasHandler(session_module.BaseSessionHandler):
@@ -173,16 +150,40 @@ class ListaIdeiasHandler(session_module.BaseSessionHandler):
         else:
             render(self)
 
+    def post(self):
+        if self.session.get("email") is not None:
+            usuario = Usuario.get_by_key_name(self.session.get("email"))
+            usuario.votar()
+            usuario.put()
+        else:
+            render(self)
+
 
 app = webapp2.WSGIApplication(
     [
         ('/', MainHandler),
         ('/login', LoginHandler),
         ('/ideias', ListaIdeiasHandler),
-        (r'/ideias/(\d+)', ListaIdeiasHandler),
         ('/cadastro', CadastroHandler),
-        ('/cadastrar_projeto', CadastrarProjetoHandler),
         ('/cadastrar_ideia', CadastrarIdeiaHandler),
     ],
     debug=True,
     config=session_module.myconfig_dict)
+
+
+#TODO: talvez não precise...
+class CadastrarProjetoHandler(session_module.BaseSessionHandler):
+    def get(self):
+        if self.session.get("email") is None:
+            render(self, template_name="login.html")
+        else:
+            render(self, template_name="cadastrar_projeto.html")
+
+    def post(self):
+        pass
+
+
+class ListaProjetosHandler(session_module.BaseSessionHandler):
+    def get(self):
+        pass
+#===============================================================================
