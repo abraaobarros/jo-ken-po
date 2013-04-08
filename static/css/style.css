@@ -1,0 +1,145 @@
+body{
+	font-size: 20px;
+}
+
+.videos{
+	background: #e5e9ec;
+	height: 390px;
+	overflow: hidden;
+	border-bottom: 20px solid #e5e9ec;
+}
+
+.btn.btn-primary{
+	background: #db3c14;
+	padding: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-weight: 500;
+}
+.btn.btn-second{
+	background: #4255df;
+	color: white;
+	padding: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-weight: 500;
+}
+
+body.landing .header .btn {
+	font-size: 1.1em;
+}
+
+.frase{
+	display:block;
+}
+.right{
+	float: right;
+}
+
+.header{
+	margin-right: 56px;
+	margin-left: 56px;
+}
+
+.titulo{
+	font-weight: 400;
+	line-height: 30px;
+	font-size: 26px;
+	font-family: 'proxima nova','Helvetica Neue',Helvetica,sans-serif;
+	color: #434950;
+	text-rendering: optimizeLegibility;
+}
+.subtitulo{
+	color: #747c81;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+.info{
+	text-align: center;
+	margin-top: 69px;
+}
+
+.info .titulo{
+	color: #db3c14;
+	margin-bottom: 18px;
+}
+
+#workflow{
+	background-image: url('../img/workflow.png');
+	background-repeat: no-repeat;
+	background-position: 90px 10px;
+	padding-left:98px;
+	text-align: left;
+}
+#workflow li{
+	display: inline-block;
+	margin-top: 150px;
+	text-align: center;
+	font-size: 17px;
+}
+#idea{
+	width: 70px;
+	margin-right: 27px;	
+}
+.plus{
+	width: :20px;
+}
+
+#team{
+	margin-left: 18px;
+	margin-right: 13px;
+}
+
+#investment{
+	margin-left: 10px;
+	margin-right: 17px;
+}
+
+#presentation{
+	text-align: center;
+	margin-bottom: 77px;
+}
+
+#online-app{
+	margin-left: 50px;
+}
+
+#crazy{
+	background-image: url('../img/crays.png');
+	height: 230px;
+	text-align: center;
+	padding-top: 180px;
+	margin-top: -410px;
+	position: relative;
+	z-index: 10;
+}
+.facebook{
+	background-image: url('../img/facebook_button.png');
+	height: 51px;
+	width: 321px;
+	display: inline-block;	
+}
+
+#footer{
+	background: #040915;
+	padding: 80px 0;
+	margin: 0;
+}
+
+.video{
+	display: inline-block;
+	background: #040915;
+	width: 300px;
+	height: 180px;
+	overflow: hidden;
+	margin: 0 17px 17px 0;
+
+}
+.videos{
+
+}
+.videos ul{
+	padding: 0;
+	margin: 25px 0 -10px -150px;
+	width: 150%;
+}

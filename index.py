@@ -39,7 +39,7 @@ def render(handler, template_name="index.html", values={}):
 class MainHandler(session_module.BaseSessionHandler):
     def get(self):
         if self.session.get('email') is None:
-            render(self, template_name='login.html')
+            render(self, template_name='index.html')
         else:
             render(self)
 

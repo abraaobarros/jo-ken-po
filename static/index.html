@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quero Pronto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; utf-8">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        FB.init({
+          appId      : 'YOUR_APP_ID',                        // App ID from the app dashboard
+          channelUrl : '//www./channel.html', // Channel file for x-domain comms
+          status     : true,                                 // Check Facebook Login status
+          xfbml      : true                                  // Look for social plugins on the page
+        });
+
+        // Additional initialization code such as adding Event Listeners goes here
+      };
+
+      // Load the SDK asynchronously
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <div class="navbar" style="margin:40px;margin-bottom: 15px">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo.jpg" width="270px" style="margin-top: -14px"></a>
+            <div class="nav-collapse collapse" style="float:right;margin-top: 5px;">
+                <ul class="nav">
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="http://blog.kippt.com/">Blog</a></li>
+                    <li class="sep"></li><li>
+                    </li><li><a href="/login/">Log in</a></li>
+                    <li class="signup"><a href="/signup/">Sign up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="frase">
+
+             <a href="#" class="btn btn-second  right">PROPONHA UM PROJETO</a>
+             <a href="#crazy" class="btn btn-primary right"
+             style="margin-right: 10px">EU SOU LOUCO</a>
+            <div class="titulo">
+                Tire sua ideia do papel em dois dias
+            </div>
+            <div class="subtitulo">
+                Deixe que os macacos criativos lutem para viabilizar seu projeto. 
+            </div>
+        </div>
+    </div>
+    
+    <div id="main">
+        <div class="videos">
+       
+        <div class="info">
+            <div class="frase">
+                <div class="titulo">
+                    QUERO ENTENDER
+                </div>
+                <div class="subtitulo">
+                    Competição entre equipes complementares, com o objetivo de modelar a sua ideia e criar o protótipo em dois dias.
+                </div>
+            </div>
+        </div>
+        <article id="presentation" class="container">
+            <ul id="workflow">
+              <li id="idea">
+                <div></div>
+                <p>Sua<br>ideia</p>
+              </li>
+              <li class="plus">
+                <div></div>
+              </li>
+              <li id="team">
+                <div></div>
+                <p>Universitários<br/>Malucos</p>
+              </li>
+              <li class="plus">
+                <div></div>
+              </li>
+              <li id="time">
+                <div></div>
+                <p>Competição <br>2 dias</p>
+              </li>
+              <li class="plus">
+                <div></div>
+              </li>
+              <li id="investment">
+                <div></div>
+                <p>Investimento<br> de 10 mil reais</p>
+              </li>
+              <li id="equals">
+                <div></div>
+              </li>
+              <li id="online-app">
+                <div></div>
+                <p>Projeto vencedor<br>Cliente Satisfeito</p>
+              </li>
+            </ul>
+        </article>
+        </div>
+    </div>
+        <div id="crazy">
+            <a href="#" class="facebook"></a>
+        </div>
+
+  </body>
+</html>
