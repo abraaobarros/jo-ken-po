@@ -140,6 +140,42 @@ body.landing .header .btn {
 }
 .videos ul{
 	padding: 0;
-	margin: 25px 0 -10px -150px;
+	margin: 25px 0 -10px -25px;
 	width: 150%;
+}
+
+.info_video{
+	color: white !important;
+	position: relative;	
+	margin-top: -60px;	
+	margin-left: 10px;
+}
+.info_video h3{
+	font-size: 20px;
+	line-height: 10px;
+}
+.info_video p{
+	font-size: 17px;
+	line-height: 10px;
+}
+
+.ideia_video{
+	display: block;
+	text-align: center;
+	padding: 60px;
+	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
+}
+.center{
+	text-align: center;
+}
+#descricao{
+	width:550px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+}
+#descricao h3{
+	margin-bottom: 20px;
 }

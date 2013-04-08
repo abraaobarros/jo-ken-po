@@ -7,6 +7,7 @@ import logging
 from util import session_module
 from model.Usuario import Usuario
 from model.ideia import Ideia
+# import gdata.youtube.service
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -38,10 +39,21 @@ def render(handler, template_name="index.html", values={}):
 
 class MainHandler(session_module.BaseSessionHandler):
     def get(self):
-        if self.session.get('email') is None:
-            render(self, template_name='index.html')
-        else:
-            render(self)
+        
+
+        # service = gdata.youtube.service.YouTubeService()
+        # feed_url = 'http://gdata.youtube.com/feeds/api/standardfeeds/most_viewed?v=2'
+        # feed = service.GetYouTubeVideoFeed(feed_url)
+        # entry = feed.entry[0] # pick most viewed video as sample entry
+
+        # thumbnail = entry.media.thumbnail[0].url
+
+        ideias = Ideia.all()
+        dados = {
+            'ideias': ideias,
+            'email': self.session.get("email"),
+        }
+        render(self, template_name='index.html', values=dados)
 
 
 class LoginHandler(session_module.BaseSessionHandler):
@@ -60,13 +72,14 @@ class LoginHandler(session_module.BaseSessionHandler):
                 'username': username,
                 'password': password,
             }
+            logging.warning(dados)
             msg = Usuario.validar_login(dados)
             if msg is None:
                 logging.warning("Logou")
                 self.session['email'] = username
                 render(self)
             else:
-                logging.warning("Não logou")
+                logging.warning("Não logou"+str(msg))
                 render(self, 'login.html')
         else:
             render(self)
@@ -108,34 +121,28 @@ class CadastroHandler(session_module.BaseSessionHandler):
 
 class CadastrarIdeiaHandler(session_module.BaseSessionHandler):
     def get(self):
-        if self.session.get("email") is None:
-            render(self, template_name="login.html")
-        else:
-            render(
-                self,
-                template_name="cadastrar_ideia.html",
-                values={'email': self.session.get('email')})
+        render(
+            self,
+            template_name="cadastrar_ideia.html",
+            values={'email': self.session.get('email')})
 
     def post(self):
-        if self.session.get("email") is not None:
-            nome = self.request.get('nome')
-            descricao = self.request.get('descricao')
-            video = self.request.get('video')
-            categoria = self.request.get('categoria')
+        nome = self.request.get('nome')
+        descricao = self.request.get('descricao')
+        video = self.request.get('video')
+        categoria = self.request.get('categoria')
 
-            ideia = Ideia()
-            ideia.nome = nome
-            ideia.descricao = descricao
-            ideia.video = video
-            ideia.categoria = categoria
-            ideia.usuario = Usuario.get_by_key_name(self.session.get('email'))
-            ideia.votos = 0
-            ideia.put()
+        ideia = Ideia()
+        ideia.nome = nome
+        ideia.descricao = descricao
+        ideia.video = video
+        ideia.categoria = categoria
+        #ideia.usuario = Usuario.get_by_key_name(self.session.get('email'))
+        ideia.votos = 0
+        ideia.put()
 
-            render(self, template_name="cadastrar_ideia.html")
+        self.redirect("/")
 
-        else:
-            render(self, template_name="login.html")
 
 
 class ListaIdeiasHandler(session_module.BaseSessionHandler):
@@ -158,12 +165,34 @@ class ListaIdeiasHandler(session_module.BaseSessionHandler):
         else:
             render(self)
 
+class IdeiaHandler(session_module.BaseSessionHandler):
+    def get(self, ideia_id):
+            ideia = Ideia.get_by_id(long(ideia_id))
+            dados = {
+                'ideia': ideia,
+            }
+            render(self, template_name="ideia.html", values=dados)
+
+class VotarHandler(session_module.BaseSessionHandler):
+    def post(self):
+            ideia = Ideia.get_by_id(long(self.request.get("ideia")))
+            if ideia.votos is None:
+                ideia.votos = 0
+            ideia.votos = ideia.votos+1
+            ideia.put()
+            self.response.out.write(ideia.votos)
+            # dados = {
+            #     'ideia': ideia,
+            # }
+            # render(self, template_name="ideia.html", values=dados)
 
 app = webapp2.WSGIApplication(
     [
         ('/', MainHandler),
         ('/login', LoginHandler),
+        (r'/ideia/(\d+)', IdeiaHandler),
         ('/ideias', ListaIdeiasHandler),
+        ('/votar', VotarHandler),
         ('/cadastro', CadastroHandler),
         ('/cadastrar_ideia', CadastrarIdeiaHandler),
     ],

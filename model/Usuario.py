@@ -43,20 +43,23 @@ class Usuario(db.Model):
         username = dados['username']
         password = dados['password']
         if username == u"":
-            msg = u"Formulário vazio"
-        elif password == u"":
-            msg = u"Senha não pode ser vazia"
+            msg = u"Formulario vazio"
+        # elif password == u"":
+            # msg = u"Senha não pode ser vazia"
         else:
             usuario = Usuario.get_by_key_name(username)
             if usuario is None:
-                msg = u"Usuário não existe"
-            else:
-                logging.warning("Tipo do self: " + str(self))
-                password_md5 = usuario.senha_md5(password)
-                if usuario.password == password_md5:
-                    msg = None
-                else:
-                    msg = u"Senha incorreta"
+                novo_usuario = Usuario(key_name=username)
+                # novo_usuario.password = password
+                novo_usuario.put()
+            msg = None
+            # else:
+            #     logging.warning("Tipo do self: " + str(self))
+            #     password_md5 = usuario.senha_md5(password)
+            #     if usuario.password == password_md5:
+            #         msg = None
+            #     else:
+            #         msg = u"Senha incorreta"
         return msg
 
     def senha_md5(self, senha):

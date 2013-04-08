@@ -1,3 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quero Pronto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; utf-8">
+    <!-- Bootstrap -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="static/css/style.css" rel="stylesheet" media="screen">
+     <script src="//connect.facebook.net/en_US/all.js"></script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+      <script type="text/javascript">
+      
+      // Initialize the Facebook JavaScript SDK
+      FB.init({
+        appId: '317536478371830',
+        xfbml: true,
+        status: true,
+        cookie: true,
+      });
+      
+      // Check if the current user is logged in and has authorized the app
+      FB.getLoginStatus(checkLoginStatus);
+      
+      // Login in the current user via Facebook and ask for email permission
+      function authUser() {
+        FB.login(checkLoginStatus, {scope:'email'});
+      }
+      
+      // Check the result of the user status and display login button if necessary
+      function checkLoginStatus(response) {
+        if(response && response.status == 'connected') {
+          $("#crazy").hide();
+          
+          // Hide the login button
+          document.getElementById('loginButton').style.display = 'none';
+          document.getElementById('logoutButton').style.display = 'block';
+          // Now Personalize the User Experience
+          console.log('Access Token: ' + response.authResponse.accessToken);
+        } else {
+          $("#crazy").show();
+          
+          // Display the login button
+          document.getElementById('loginButton').style.display = 'block';
+          document.getElementById('logoutButton').style.display = 'none';
+        }
+      }
+
+</script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <div class="navbar" style="margin:40px;margin-bottom: 15px">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width="270px" style="margin-top: -14px"></a>
+            <div class="nav-collapse collapse" style="float:right;margin-top: 5px;">
+                <ul class="nav">
+                    <li><a href="#info">Como é?</a></li>
+                    <li><a href="http://blog.kippt.com/">Blog</a></li>
+                    <li class="sep"></li><li>
+                    </li><li><a href="" id="loginButton" onclick="FB.login()">Log in</a></li>
+                  </li><li><a href="" id="logoutButton" style="display:none" onclick="FB.logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="frase">
+             <a href="#crazy" class="btn btn-primary right"
+             style="margin-right: 10px">PROPONHA UMA IDEIA</a>
+            <div class="titulo">
+                Tire sua ideia do papel em dois dias
+            </div>
+            <div class="subtitulo">
+                Deixe que os macacos criativos lutem para viabilizar seu projeto. 
+            </div>
+        </div>
+    </div>
+    
+    <div id="main">
+        <div class="videos">
+            <ul>
+              
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+              <li class="video">
+                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div id="crazy">
+        <a href="#" class="facebook" onclick="authUser()"></a>
+    </div>
+    <div class="info" id="info">
+            <div class="frase">
+                <div class="titulo">
+                    QUERO ENTENDER
+                </div>
+                <div class="subtitulo">
+                    Competição entre equipes complementares, com o objetivo de modelar a sua ideia e criar o protótipo em dois dias.
+                </div>
+            </div>
+        </div>
+        <article id="presentation" class="container">
+            <ul id="workflow">
+              <li id="idea">
+                <div></div>
+                <p>Sua<br>ideia</p>
+              </li>
+              <li class="plus">
+                <div></div>
+              </li>
+              <li id="team">
+                <div></div>
+                <p>Universitários<br/>Malucos</p>
+              </li>
+              <li class="plus">
+                <div></div>
+              </li>
+              <li id="time">
+                <div></div>
+                <p>Competição <br>2 dias</p>
+              </li>
+              <li class="plus">
+                <div></div>
+              </li>
+              <li id="investment">
+                <div></div>
+                <p>Investimento<br> de 10 mil reais</p>
+              </li>
+              <li id="equals">
+                <div></div>
+              </li>
+              <li id="online-app">
+                <div></div>
+                <p>Projeto vencedor<br>Cliente Satisfeito</p>
+              </li>
+            </ul>
+        </article>
+  <!--   <div id="footer">
+        <div class="apoio">
+          <div id="urbbox"><img src="http://urbbox-python.appspot.com/static/home/images/logo-urbbox_pt-br.png"></div>
+          <div id="eita"></div>
+        </div>
+    </div>
+
+    <div id="modal">
+        <form class="navbar-form pull-left">
+          Descricao:<br/><input type="text" class="span2"><br/>
+          Video(5mb):<br/><input type="file" class="span2">
+          <button type="submit" class="btn">Submit</button>
+        </form>
+    </div> -->
+  
+  </body>
+</html>
+
+
+
+
+
 {% for x in ideias %}
 
     {{x.nome}}<br/>
