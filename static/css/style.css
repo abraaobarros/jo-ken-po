@@ -125,7 +125,16 @@ body.landing .header .btn {
 	padding: 80px 0;
 	margin: 0;
 }
-
+#footer h2{
+	color: white;
+	margin-top: 0px;
+	display: block;
+	font-size: 20px;
+}
+#footer img{
+	margin-left: 180px;
+	margin-top: -100px;
+}
 .video{
 	display: inline-block;
 	background: #040915;
@@ -133,6 +142,7 @@ body.landing .header .btn {
 	height: 180px;
 	overflow: hidden;
 	margin: 0 17px 17px 0;
+	float: left;
 
 }
 .videos{
@@ -141,22 +151,26 @@ body.landing .header .btn {
 .videos ul{
 	padding: 0;
 	margin: 25px 0 -10px -25px;
-	width: 150%;
+	width: 110%;
 }
 
 .info_video{
 	color: white !important;
-	position: relative;	
-	margin-top: -60px;	
+	position: relative;
+	margin-top: -74px;
 	margin-left: 10px;
+	height: -30px;
+	overflow: hidden;
+	display: block;
+	float: left;
 }
 .info_video h3{
-	font-size: 20px;
+	font-size: 17px;
 	line-height: 10px;
 }
 .info_video p{
-	font-size: 17px;
-	line-height: 10px;
+	font-size: 15px;
+	line-height: 20px;
 }
 
 .ideia_video{
@@ -179,3 +193,4 @@ body.landing .header .btn {
 #descricao h3{
 	margin-bottom: 20px;
 }
+

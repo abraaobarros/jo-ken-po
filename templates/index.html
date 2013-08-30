@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+
     <title>Quero Pronto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; utf-8">
@@ -10,7 +11,18 @@
      <script src="//connect.facebook.net/en_US/all.js"></script>
   </head>
   <body>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39945095-1', 'queroprontotest.appspot.com');
+        ga('send', 'pageview');
+
+      </script>
     <div id="fb-root"></div>
+
       <script type="text/javascript">
       function logar_cadastrar(user, user_id){
 
@@ -79,7 +91,7 @@
                 Tire sua ideia do papel em dois dias
             </div>
             <div class="subtitulo">
-                Deixe que os macacos alienígenos lutem para viabilizar seu projeto. 
+                Deixe que os melhores alunos do país lutem para viabilizar seu projeto. 
             </div>
         </div>
     </div>
@@ -97,56 +109,21 @@
                         </div>
                     </li>
                   </a>
-              <!-- <form action="/ideias" method="post">
-                  <button type="submit">Votar</button>
-              </form>
-               -->
-
               {% endfor %}
 
-              <!-- 
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li>
-              <li class="video">
-                  <iframe width="300" height="180" src="http://www.youtube.com/embed/dzvbqPwcjrc" frameborder="0" allowfullscreen></iframe>
-              </li> -->
-            </ul>
+              </ul>
         </div>
     </div>
     <div id="crazy">
         <a href="#" class="facebook" onclick="authUser()"></a>
     </div>
-    <!-- <div class="info" id="info">
+    <div class="info" id="info">
             <div class="frase">
                 <div class="titulo">
-                    QUERO ENTENDER
+                    Como é?
                 </div>
                 <div class="subtitulo">
-                    Competição entre equipes complementares, com o objetivo de modelar a sua ideia e criar o protótipo em dois dias.
+                    Competição entre equipes complementares, com o objetivo de modelar a ideia mais votada e criar protótipo em dois dias. 
                 </div>
             </div>
         </div>
@@ -161,7 +138,7 @@
               </li>
               <li id="team">
                 <div></div>
-                <p>Universitários<br/>Malucos</p>
+                <p>Universitários<br/>
               </li>
               <li class="plus">
                 <div></div>
@@ -175,7 +152,7 @@
               </li>
               <li id="investment">
                 <div></div>
-                <p>Investimento<br> de 10 mil reais</p>
+                <p>Patrocínio e<br> apoio</p>
               </li>
               <li id="equals">
                 <div></div>
@@ -185,6 +162,34 @@
                 <p>Projeto vencedor<br>Cliente Satisfeito</p>
               </li>
             </ul>
-        </article>-->    
+        </article>  
+        <div id="footer">
+            <h2>Apoio:</h2>
+            <img src="/static/img/urbbox_logo.png" alt="">
+             <img src="/static/img/eita_logo.png" alt="">
+        </div>
+
+
+
+
+        <!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
+
   </body>
 </html>
