@@ -37,7 +37,7 @@ def render(handler, template_name="index.html", values={}):
 
 class MainHandler(session_module.BaseSessionHandler):
     def get(self):
-        render(self, template_name='index.html', values={})
+        render(self, template_name='index.html', values={"abraao": "Tequila App"})
 
 
 #Router 'caminho' => 'Classe de acesso'

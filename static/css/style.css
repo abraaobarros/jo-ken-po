@@ -1,196 +1,156 @@
 body{
-	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: black;
+	background: url(../img/background.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: serif !important;
+	padding-top: 50px;
 }
 
-.videos{
-	background: #e5e9ec;
-	height: 390px;
-	overflow: hidden;
-	border-bottom: 20px solid #e5e9ec;
+.main{
+	margin-top: 40px;
+	display: inline-block;
+	background-color: rgba(255, 255, 255, .2);
+	color: rgba(255, 255, 255, .2);
+	font-family: Georgia !important;
+
 }
 
-.btn.btn-primary{
-	background: #db3c14;
-	padding: 15px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-weight: 500;
+
+/*   Login    */
+
+.login{
+	background-color: rgba(255, 255, 255, .4);
+	color: rgba(255, 255, 255, .4);
+	width: 280px;
+	height: 280px;
+	margin: 13px;
 }
-.btn.btn-second{
-	background: #4255df;
+
+.facebook{
+	padding-top: 30px;
+}
+.facebook img{
+	height: 50px;
+}
+
+.field{
+	width: 206px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	margin-top: 5px;
+}
+.field input{
+	border: none;
+	border-radius: 0px;
+	width: 140px;
+	padding-top: 10px;
+	float: right;
+	height: 31px;
+}
+.field span{
+	width: 50px;
+	height: 50px;
+	background-color: #dcdcdc;
+	display: inline-block;
+	margin-left: -5px;
+}
+.field img{
+	height: 25px;
+	margin-top: 13px;
+	opacity: 0.3;
+}
+.login button{
+	
+	border: none;
+	padding: 13px;
+	padding-left: 26px;
+	padding-right: 26px;
+	margin-right: -3px;
+}
+
+.buttons{
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	text-align: right;
+}
+
+.buttons button {
+	font-weight: bold;
 	color: white;
-	padding: 15px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-weight: 500;
+	text-shadow: 1px 1px 0px #000000;
+	filter: dropshadow(color=#000000, offx=1, offy=1);
 }
 
-body.landing .header .btn {
-	font-size: 1.1em;
+.blue{
+	background-color: #A2C9D3;
+	float: left;
 }
-
-.frase{
-	display:block;
-}
-.right{
+.red{
+	background-color: #F17467;
 	float: right;
 }
-
-.header{
-	margin-right: 56px;
-	margin-left: 56px;
+.clear{
+	clear: both;
 }
 
-.titulo{
-	font-weight: 400;
-	line-height: 30px;
-	font-size: 26px;
-	font-family: 'proxima nova','Helvetica Neue',Helvetica,sans-serif;
-	color: #434950;
-	text-rendering: optimizeLegibility;
-}
-.subtitulo{
-	color: #747c81;
-	font-size: 20px;
-	margin-bottom: 30px;
-}
-.info{
-	text-align: center;
-	margin-top: 69px;
-}
 
-.info .titulo{
-	color: #db3c14;
-	margin-bottom: 18px;
-}
 
-#workflow{
-	background-image: url('../img/workflow.png');
-	background-repeat: no-repeat;
-	background-position: 90px 10px;
-	padding-left:98px;
-	text-align: left;
-}
-#workflow li{
-	display: inline-block;
-	margin-top: 150px;
-	text-align: center;
-	font-size: 17px;
-}
-#idea{
-	width: 70px;
-	margin-right: 27px;	
-}
-.plus{
-	width: :20px;
-}
+/*   Footer   */
 
-#team{
-	margin-left: 18px;
-	margin-right: 13px;
-}
-
-#investment{
-	margin-left: 10px;
-	margin-right: 17px;
-}
-
-#presentation{
-	text-align: center;
-	margin-bottom: 77px;
-}
-
-#online-app{
-	margin-left: 50px;
-}
-
-#crazy{
-	background-image: url('../img/crays.png');
-	height: 230px;
-	text-align: center;
-	padding-top: 180px;
-	margin-top: -410px;
-	position: relative;
-	z-index: 10;
-}
-.facebook{
-	background-image: url('../img/facebook_button.png');
-	height: 51px;
-	width: 321px;
-	display: inline-block;	
-}
-
-#footer{
-	background: #040915;
-	padding: 80px 0;
-	margin: 0;
-}
-#footer h2{
-	color: white;
-	margin-top: 0px;
-	display: block;
-	font-size: 20px;
-}
-#footer img{
-	margin-left: 180px;
-	margin-top: -100px;
-}
-.video{
-	display: inline-block;
-	background: #040915;
-	width: 300px;
-	height: 180px;
-	overflow: hidden;
-	margin: 0 17px 17px 0;
-	float: left;
-
-}
-.videos{
-
-}
-.videos ul{
-	padding: 0;
-	margin: 25px 0 -10px -25px;
-	width: 110%;
-}
-
-.info_video{
-	color: white !important;
-	position: relative;
-	margin-top: -74px;
-	margin-left: 10px;
-	height: -30px;
-	overflow: hidden;
-	display: block;
-	float: left;
-}
-.info_video h3{
-	font-size: 17px;
-	line-height: 10px;
-}
-.info_video p{
-	font-size: 15px;
-	line-height: 20px;
-}
-
-.ideia_video{
-	display: block;
-	text-align: center;
-	padding: 60px;
+.footer{
 	background-color: black;
-	margin-left: auto;
-	margin-right: auto;
-}
-.center{
-	text-align: center;
-}
-#descricao{
-	width:550px;
-	margin-right: auto;
-	margin-left: auto;
+	padding: 25px;
+	width: 960px;
+	margin-left: -480px;
 	text-align: left;
+	color: white;
+	position: absolute; 
+	top: 100%;
+	left: 50%;
 }
-#descricao h3{
-	margin-bottom: 20px;
+
+.footer .links a{
+	float: right;
+	margin-left: 40px;
 }
+
+input[type=text], input[type=password], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  margin: 0px;
+  border: 0px;
+}
+ 
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  box-shadow: 0 0 0px rgba(81, 203, 238, 1);
+  margin: 0px;
+  border: 0px;
+}
+
+button {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+}
+ 
+button:focus, button:hover {
+  background-color: #f03d2a;
+}
+
+
+
 
